@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<!-- web.xml文件的作用是初始化配置信息：比如Welcome页面、servlet、servlet-mapping、filter、listener、启动加载级别等 
+	1.启动一个WEB项目的时候,容器(如:Tomcat)会去读它的配置文件web.xml -->
+	
+	<display-name>mallDemo</display-name>
+
+	<!-- 指定Spring配置文件(包括service层和DAO层的一些配置) -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:conf/applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- 初始化监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 分发器配置，将.do后缀的请求交给 dispatcher-servlet.xml中的配置处理 ==============相当于是web/controller层的配置==================== 
+		servlethe和servlet-mapping是配套的,servlet-name也要一致，否则会报错 -->
+	<servlet>
+		<servlet-name>mallDemoDispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 如果不指定则文件名默认是 mallDemoDispatcher-servlet.xml -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:conf/dispatcher-servlet.xml</param-value>
+		</init-param>
+		<!-- 启动顺序， 中间的值越小，优先级就越高 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mallDemoDispatcher</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 过滤器 ，对请求信息的编码统一转换成UTF-8，以避免乱码  filter和filter-mapping也是配套的-->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
