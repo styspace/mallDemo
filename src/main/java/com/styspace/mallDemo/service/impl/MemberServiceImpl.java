@@ -10,6 +10,8 @@ package com.styspace.mallDemo.service.impl;
 import java.sql.Timestamp;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,7 @@ import com.styspace.mallDemo.service.interfaces.MemberService;
  */
 @Service
 public class MemberServiceImpl extends BaseServiceImpl implements MemberService {
+	private static final Logger Logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	@Autowired
 	private MemberDao memberDao;
 	
@@ -60,7 +63,7 @@ public class MemberServiceImpl extends BaseServiceImpl implements MemberService 
 		
 		// 返回数据
 		JSONObject result = new JSONObject();
-		
+		Logger.info(user.toString());
 		boolean isSuccess = memberDao.register(user);
 		result.put("isSuccess", isSuccess);
 		// 返回

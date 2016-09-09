@@ -144,6 +144,27 @@
     		<version>1.9.13</version>
 		</dependency>
 		<!-- ===================spring 处理json格式请求和返回信息所需jar包 结束================ -->
+		
+		<!-- =================== slf4j日志框架 + log4j日志系统 开始=================== -->
+		<!-- slf4j框架接口jar包 -->
+		<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-api</artifactId>
+    		<version>1.7.7</version>
+		</dependency>
+		<!-- 绑定器 -->
+		<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-log4j12</artifactId>
+    		<version>1.7.5</version>
+		</dependency>
+		<!-- log4j实现类 -->
+		<dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+    		<version>1.2.17</version>
+		</dependency>
+		<!-- =================== slf4j日志框架 + log4j日志系统 结束=================== -->
 	</dependencies>
 	<build>
 		<finalName>MallDemo</finalName>
