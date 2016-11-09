@@ -24,6 +24,7 @@ import com.styspace.mallDemo.utils.Md5ToolsUtils;
  */
 @Service
 public class BaseServiceImpl {
+	
 	/**
 	 * 构造返回结果结构
 	 * returnObjInfo
@@ -46,7 +47,6 @@ public class BaseServiceImpl {
 		}
 		Object result = new ReponseResult(end - start, errorCode, errorDesc, body);
 		return result;
-		
 	}
 	
 	public String createToken(String token, String username, String password) {
