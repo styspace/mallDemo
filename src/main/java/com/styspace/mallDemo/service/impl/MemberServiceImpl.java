@@ -45,6 +45,7 @@ public class MemberServiceImpl extends BaseServiceImpl implements MemberService 
 	 */
 	@Override
 	public Object register(String data) {
+		// 记录运行时间
 		long start = System.currentTimeMillis();
 		
 		JSONObject jsonData = JSON.parseObject(data);
