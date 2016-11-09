@@ -7,6 +7,9 @@
  */
 package com.styspace.mallDemo.mapper;
 
+import java.util.Map;
+
+import com.styspace.mallDemo.domain.myBatis.BindToken;
 import com.styspace.mallDemo.domain.myBatis.User;
 
 /**
@@ -28,4 +31,49 @@ public interface UserMapper {
 	 * @since  1.0.0
 	 */
 	public boolean register(User user);
+	
+	
+	/**
+	 * 用户名是否存在
+	 * isUserExitByUsername
+	 * @param user
+	 * @return
+	 *int
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public int isUserExitByUsername(User user);
+	
+	/**
+	 * 用户登录
+	 * login
+	 * @param param
+	 * @return
+	 *int
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public int login(Map<String, String> param);
+	
+	/**
+	 * 插入新的token信息
+	 * insertToken
+	 * @param tokenInfo
+	 * @return
+	 *boolean
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public boolean insertToken(BindToken tokenInfo);
+	
+	/**
+	 * 更新token信息
+	 * updateToken
+	 * @param param
+	 * @return
+	 *boolean
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public boolean updateToken(Map<String, Object> param);
 }

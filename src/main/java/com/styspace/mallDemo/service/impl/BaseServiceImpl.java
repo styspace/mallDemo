@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.styspace.mallDemo.pojo.ReponseResult;
+import com.styspace.mallDemo.utils.Md5ToolsUtils;
 
 /**
  * @ClassName BaseServiceImpl
@@ -45,5 +46,12 @@ public class BaseServiceImpl {
 		}
 		Object result = new ReponseResult(end - start, errorCode, errorDesc, body);
 		return result;
+		
+	}
+	
+	public String createToken(String token, String username, String password) {
+		long time = System.currentTimeMillis();
+		String seed = time + username + token;
+		return Md5ToolsUtils.md5(seed);
 	}
 }

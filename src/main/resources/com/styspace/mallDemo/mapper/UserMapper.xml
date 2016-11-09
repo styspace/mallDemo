@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.styspace.mallDemo.mapper.UserMapper">
+
+	<!-- 注册 -->
 	<insert id="register" parameterType="com.styspace.mallDemo.domain.myBatis.User">
-		INSERT INTO user(userName,password,cellPhone,email,isVip,cTime,mTime,lastLogin)
-		VALUES(#{userName},#{password},#{cellPhone},#{email},#{isVIP},#{cTime},#{mTime},#{lastLogin})
+		INSERT INTO 
+		user(userName,password,cellPhone,email,isVip,cTime,mTime,lastLogin)
+		VALUES
+		(#{userName},#{password},#{cellPhone},#{email},#{isVIP},#{cTime},#{mTime},#{lastLogin})
 	</insert>
+	
+	<!-- 用户名是否存在 -->
+	<select id="isUserExitByUsername" parameterType="com.styspace.mallDemo.domain.myBatis.User" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM user
+		WHERE userName=#{userName}
+	</select>
+	
+	<!-- 登录 -->
+	<select id="login" parameterType="java.util.Map"  resultType="java.lang.Integer">
+		SELECT COUNT(*) 
+		FROM user 
+		WHERE userName=#{username} AND password=#{password}
+	</select>
+	
+	<!-- 插入新的token信息 -->
+	<insert id="insertToken" parameterType="com.styspace.mallDemo.domain.myBatis.BindToken">
+		INSERT INTO
+		token(token,isLogin,lastLoginTime,cTime)
+		VALUES
+		(#{token},#{isLogin},#{lastLoginTime},#{cTime})
+	</insert>
+	
+	<update id="updateToken" parameterType="java.util.Map">
+		UPDATE token
+		SET  token=#{newToken},isLogin=1,lastLoginTime=#{lastLoginTime},mTime=#{mTime}
+		WHERE token=#{token}
+	</update>
 </mapper>

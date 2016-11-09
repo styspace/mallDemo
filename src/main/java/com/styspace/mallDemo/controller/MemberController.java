@@ -43,11 +43,19 @@ public class MemberController extends BaseController {
 	 * @exception
 	 * @since  1.0.0
 	 */
-	@RequestMapping(value="/register", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/register", method=RequestMethod.POST)
 	@ResponseBody
 	public Object register(@RequestParam("data") String data) {
 		LOGGER.info(data);
 		Object result = memberService.register(data);
-		return result;
+		return getResponse(result);
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@ResponseBody
+	public Object login(@RequestParam("data") String data){
+		LOGGER.info(data);
+		Object result = memberService.login(data);
+		return getResponse(result);
 	}
 }

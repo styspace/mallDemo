@@ -132,7 +132,7 @@
 		</dependency>
 		<!-- ============================工具类 结束==================================== -->
 		
-		<!-- ===================spring 处理json格式请求和返回信息所需jar包 开始================ -->
+		<!-- ===================spring mvc 使用@ResponseBody 处理json格式请求和返回信息所需jar包 开始================ -->
 		<dependency>
     		<groupId>org.codehaus.jackson</groupId>
     		<artifactId>jackson-core-asl</artifactId>
@@ -143,7 +143,7 @@
     		<artifactId>jackson-mapper-asl</artifactId>
     		<version>1.9.13</version>
 		</dependency>
-		<!-- ===================spring 处理json格式请求和返回信息所需jar包 结束================ -->
+		<!-- ===================spring mvc 使用@ResponseBody 处理json格式请求和返回信息所需jar包 开始================ -->
 		
 		<!-- =================== slf4j日志框架 + log4j日志系统 开始=================== -->
 		<!-- slf4j框架接口jar包 -->

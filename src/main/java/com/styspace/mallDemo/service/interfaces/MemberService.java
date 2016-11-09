@@ -26,4 +26,15 @@ public interface MemberService {
 	 * @since  1.0.0
 	 */
 	public Object register(String data);
+	
+	/**
+	 * 用户登录
+	 * login
+	 * @param data
+	 * @return
+	 *Object
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public Object login(String data);
 }
